@@ -44,7 +44,7 @@ const TagsPlugin: Plugin = {
           if (text == null) {
             sendReply(channel.id, `Tag \`${tagName}\` not found.`);
           } else {
-            sendReply(channel.id, text);
+            sendReply(channel.id, `Tag Content: ${text}`);
             //return {
             //  content: text
             //};
