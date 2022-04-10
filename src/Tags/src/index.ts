@@ -44,9 +44,10 @@ const TagsPlugin: Plugin = {
           if (text == null) {
             sendReply(channel.id, `Tag \`${tagName}\` not found.`);
           } else {
-            return {
-              content: text
-            };
+            sendReply(channel.id, text);
+            //return {
+            //  content: text
+            //};
           }
         });
       }
@@ -131,8 +132,12 @@ const TagsPlugin: Plugin = {
         const tagName = args[0].value;
         const channel = message.channel;
 
-        removeItem(`tag.${tagName}`).then(() => {
-          sendReply(channel.id, `Tag \`${tagName}\` removed.`);
+        removeItem(`tag.${tagName}`).then((tag) => {
+          if (tag == null) {
+            sendReply(channel.id, `Tag \`${tagName}\` not found.`);
+          } else {
+            sendReply(channel.id, `Tag \`${tagName}\` removed.`);
+          }
         });
       }
     }
