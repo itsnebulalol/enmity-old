@@ -50,9 +50,9 @@ const TagsPlugin: Plugin = {
             //sendReply(channel.id, `Tag Content: ${text}`);
             //getModuleByProps('sendMessage').sendMessage(channel.id, { content: `TESTING TESTING KSHIHDSHN ${text}` });
           }
+        }).finally(() => {
+          return { content: tagText };
         });
-
-        return { content: tagText };
       }
     }
 
