@@ -76,6 +76,16 @@ const TagsPlugin: Plugin = {
           type: ApplicationCommandOptionType.String,
           required: true
         },
+        {
+          name: "content",
+          displayName: "content",
+
+          description: "Content for the tag to add",
+          displayDescription: "Content for the tag to add",
+
+          type: ApplicationCommandOptionType.String,
+          required: true
+        },
       ],
 
       execute: function (args, message) {
