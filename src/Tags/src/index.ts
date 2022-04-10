@@ -39,19 +39,15 @@ const TagsPlugin: Plugin = {
       execute: async function (args, message) {
         const tagName = args[0].value;
         const channel = message.channel;
-        var tagText = "";
 
         getItem(`tag.${tagName}`).then((text) => {
           if (text == null) {
             sendReply(channel.id, `Tag \`${tagName}\` not found.`);
             return {};
           } else {
-            tagText = text;
-            //sendReply(channel.id, `Tag Content: ${text}`);
+            sendReply(channel.id, `${text}`);
             //getModuleByProps('sendMessage').sendMessage(channel.id, { content: `TESTING TESTING KSHIHDSHN ${text}` });
           }
-        }).finally(() => {
-          return { content: tagText };
         });
       }
     }
