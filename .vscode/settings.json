@@ -1,0 +1,13 @@
+{
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": "file:///Users/beerpsi/git_stuff/Enmity-Plugins/.github/workflows/build.yaml"
+    },
+    "files.watcherExclude": {
+        "src/**/node_modules/**": true,
+        "src/**/rollup.config.ts": true
+    },
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    }
+}
