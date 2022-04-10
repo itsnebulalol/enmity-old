@@ -3,6 +3,7 @@ import { ApplicationCommandInputType, ApplicationCommandOptionType, ApplicationC
 import { Plugin, registerPlugin } from "enmity-api/plugins";
 import { getItem, removeItem, setItem } from "enmity-api/storage";
 
+// Plugin for managing tags
 const TagsPlugin: Plugin = {
   name: "Tags",
   commands: [],
