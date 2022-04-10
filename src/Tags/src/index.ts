@@ -48,7 +48,7 @@ const TagsPlugin: Plugin = {
           } else {
             //sendReply(channel.id, `Tag Content: ${text}`);
             //return { content: `${text}` };
-            getModuleByProps('sendMessage').sendMessage(channel.id, text);
+            getModuleByProps('sendMessage').sendMessage(text);
           }
         });
       }
