@@ -36,13 +36,14 @@ const TagsPlugin: Plugin = {
         },
       ],
 
-      execute: function (args, message) {
+      execute: async function (args, message): Promise<void> {
         const tagName = args[0].value;
         const channel = message.channel;
 
         getItem(`tag.${tagName}`).then((text) => {
           if (text == null) {
             sendReply(channel.id, `Tag \`${tagName}\` not found.`);
+            return {};
           } else {
             //sendReply(channel.id, `Tag Content: ${text}`);
             return {
@@ -90,13 +91,14 @@ const TagsPlugin: Plugin = {
         },
       ],
 
-      execute: function (args, message) {
+      execute: async function (args, message): Promise<void> {
         const tagName = args[0].value;
         const tagContent = args[1].value;
         const channel = message.channel;
 
         setItem(`tag.${tagName}`, tagContent).then(() => {
           sendReply(channel.id, `Tag \`${tagName}\` added.`);
+          return {};
         });
       }
     }
@@ -128,15 +130,17 @@ const TagsPlugin: Plugin = {
         },
       ],
 
-      execute: function (args, message) {
+      execute: async function (args, message): Promise<void> {
         const tagName = args[0].value;
         const channel = message.channel;
 
         removeItem(`tag.${tagName}`).then((tag) => {
           if (tag == null) {
             sendReply(channel.id, `Tag \`${tagName}\` not found.`);
+            return {};
           } else {
             sendReply(channel.id, `Tag \`${tagName}\` removed.`);
+            return {};
           }
         });
       }
