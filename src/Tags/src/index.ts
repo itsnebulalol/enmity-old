@@ -1,5 +1,6 @@
 import { sendReply } from "enmity-api/clyde";
 import { ApplicationCommandInputType, ApplicationCommandOptionType, ApplicationCommandType, Command, EnmitySectionID } from "enmity-api/commands";
+import { getModuleByProps } from "enmity-api/module";
 import { Plugin, registerPlugin } from "enmity-api/plugins";
 import { getItem, removeItem, setItem } from "enmity-api/storage";
 
@@ -46,9 +47,8 @@ const TagsPlugin: Plugin = {
             return {};
           } else {
             //sendReply(channel.id, `Tag Content: ${text}`);
-            return {
-              content: `${text}`
-            };
+            //return { content: `${text}` };
+            getModuleByProps('sendMessage').sendMessage(channel.id, text);
           }
         });
       }
@@ -135,13 +135,8 @@ const TagsPlugin: Plugin = {
         const channel = message.channel;
 
         removeItem(`tag.${tagName}`).then((tag) => {
-          if (tag == null) {
-            sendReply(channel.id, `Tag \`${tagName}\` not found.`);
-            return {};
-          } else {
-            sendReply(channel.id, `Tag \`${tagName}\` removed.`);
-            return {};
-          }
+          sendReply(channel.id, `Tag \`${tagName}\` removed.`);
+          return {};
         });
       }
     }
