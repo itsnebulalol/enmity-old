@@ -36,20 +36,23 @@ const TagsPlugin: Plugin = {
         },
       ],
 
-      execute: async function (args, message): Promise<void> {
+      execute: async function (args, message) {
         const tagName = args[0].value;
         const channel = message.channel;
+        var tagText = "";
 
         getItem(`tag.${tagName}`).then((text) => {
           if (text == null) {
             sendReply(channel.id, `Tag \`${tagName}\` not found.`);
             return {};
           } else {
-            sendReply(channel.id, `Tag Content: ${text}`);
-            //return { content: `${text}` };
+            tagText = text;
+            //sendReply(channel.id, `Tag Content: ${text}`);
             //getModuleByProps('sendMessage').sendMessage(channel.id, { content: `TESTING TESTING KSHIHDSHN ${text}` });
           }
         });
+
+        return { content: tagText };
       }
     }
 
@@ -90,7 +93,7 @@ const TagsPlugin: Plugin = {
         },
       ],
 
-      execute: async function (args, message): Promise<void> {
+      execute: async function (args, message) {
         const tagName = args[0].value;
         const tagContent = args[1].value;
         const channel = message.channel;
@@ -129,7 +132,7 @@ const TagsPlugin: Plugin = {
         },
       ],
 
-      execute: async function (args, message): Promise<void> {
+      execute: async function (args, message) {
         const tagName = args[0].value;
         const channel = message.channel;
 
